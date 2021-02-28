@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sinestezi</title>
+	<link rel="stylesheet" href="../public/css/homePage.css"/>
+</head>
+<body>
+
+	<header style="padding-top: 50px;">
+		<img src="../public/images/logo2.png">
+	</header>
+	<header style="bottom: 0;">
+		<h4 style="text-align: center; color: white;">Product of EU</h4>
+		<h5 style="text-align: center; color: white;">Sinestezi is a website where you can express your feelings with colors</h5>
+	</header>
+	<div class="mainScreen">
+
+		<div class="loginSide side" id="loginSideDiv">
+			
+			<form action="/users/login" method="POST">
+				
+				<div>
+					<h1 style="text-align: center; color: white; font-size: 45px;">Login</h1>
+				</div>
+				<div style="margin-top:10px;text-align:center;color:red;font-weight:bold">
+					<%=loginErr.length > 0?loginErr:''%>
+				</div>
+				<div>
+					<input type="name" name="nick" placeholder="Nick" required=""/>
+				</div>
+				<div>
+					<input type="password" name="password" placeholder="Password" required=""/>
+				</div>
+				<div>
+					<button type="submit">LOGIN</button>
+				</div>
+			</form>
+		</div>
+
+		<div class="signSide side" id="signSideDiv">
+			<form action="/users/signup" method="POST"  id="signForm">
+				<div>
+					<h1 style="text-align: center; color: white;font-size: 45px;">Sign Up</h1>
+				</div>
+				<div style="margin-top:10px;text-align:center;color:green;font-weight:bold">
+					<%=signSuccess.length > 0?signSuccess:''%>
+				</div>
+				<div style="margin-top:10px;text-align:center;color:red;font-weight:bold">
+					<%=signErr.length > 0?signErr:''%>
+				</div>
+				<div>
+					<input type="name" name="name" placeholder="Name" required=""/>
+				</div>
+				<div>
+					<input type="name" name="nick" placeholder="Nick" required=""/>
+				</div>
+				<div>
+					<input type="name" name="mail" placeholder="Mail" required=""/>
+				</div>
+				<div>
+					<input type="password" name="password" placeholder="Password" required=""/>
+				</div>
+				<div>
+					<input type="password" name="passwordAgain" placeholder="Password Again" required=""/>
+				</div>
+				<div>
+					<button type="submit">SIGN</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+<script src="../public/js/homePage.js"></script>
+</body>
+</html>

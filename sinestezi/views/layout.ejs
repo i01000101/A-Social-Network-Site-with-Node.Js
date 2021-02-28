@@ -1,0 +1,106 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sinestezi</title>
+	<link rel="stylesheet" href="../public/css/streamScreen.css"/>
+</head>
+<body>
+	<div id="topBar">
+		<div class="topItem input" style="margin-top:10px;">
+		</div>
+		<div id="logoBar" class="topItem" style="margin-top:10px;">
+			<a href="/"><img src="../public/images/littleLogo.png" role="logo" /></a>
+		</div>
+		<div class="topItem">
+		
+            <form action="/home/search" method="POST" id="searchForm">
+				
+			    <input type="name" name="search" placeholder="Search" style="padding-left: 10px; padding-right: 10px; border-top-right-radius: 0px;border-bottom-right-radius: 0px; ">
+                <button style="padding: 0px; width: 30px; height:30px; border: none; background-color:white; outline:0; cursor:pointer; border-top-right-radius:15px;" type="submit"><img src="../public/images/search.png" role="logo" /></button>
+				
+			</form>
+			
+        </div>
+	</div>
+
+	<div style="height: 50px;"></div>
+	
+	<div id="mainScreen" style="height: 94.2vh">
+		
+		<div style="flex:4;">
+			<div style="position: fixed; width:30.88%; height:100%; background-color: #333333; align-items:center;box-shadow: 9px 5px 8px 0px black;">
+			<div style="margin-top: 10px;">
+			<a href="/users/<%=user.nick%>" style="cursor: pointer;">
+				<div style="font-size:23px; color: white; text-align: center;"><%= user.name %></div>
+				<div style="font-size:12px; color: darkgray; text-align: center;">@<%= user.nick %></div>
+			</a>
+			</div>
+			<div style="margin-top: 50px;">
+				<form action="/home/share" method="POST" id="shearingForm" style="display:flex; flex-direction:column; align-items:center">
+					<textarea name="contentOfSharing" placeholder="Talk about something..." style="background-color: #111111; color:white; width: 75%; height:100px; resize:none; padding:10px 20px; border-top-right-radius:20px; border-top-left-radius:20px; border-style:none; outline:0"></textarea>
+			    	<div style="display:flex;background-color: #111111; width: 75%; height:40px; border-bottom-right-radius: 20px; border-bottom-left-radius:20px;">
+					<div style="flex:1;text-align:center"><input type="color" name="colorSelector" value="<%=(user.posts.length != 0 )?user.posts[user.posts.length-1].color:'#E91E62'%>" style="background:transparent;"/></div>
+					<div style="flex:1;text-align:center">
+					<button style="background:none; border:none; outline:0; cursor:pointer; color: white; border-radius:20px; height:30px" type="submit">
+					<img src= "../public/images/post.svg" style="width:25px;"/></button>
+					</div>
+				
+					</div>
+					
+				</form>
+			</div>
+			<hr style="width:30%; margin:20px auto; height:1px;border:none; background-color:#111111;">
+			
+			<div style="width: 75%;height:30px;background-color:#111111;margin:auto;border-top-right-radius:20px;border-top-left-radius:20px;padding: 0 10px 10px 10px;text-align:center;font-size:25px;color:#333333;color:#333333;font-family:Sans-Serif;font-weight: bold; ">
+			POSTS
+			</div>
+
+			<div style="width: 75%; height:220px; background-color:#111111; margin:auto; border-bottom-left-radius:20px; border-bottom-right-radius:20px;  overflow: auto; padding: 0 10px 10px 10px;">
+				<% for(let i = user.posts.length - 1; 0 <= i ; i--){%>
+					<div name="selfShearing" style="margin-top:10px; border:2px solid <%=user.posts[i].color%>; border-radius:15px; padding:5px 10px;word-wrap: break-word;">
+						
+						<div style="display:flex;justify-content:space-between">
+							<a style="cursor: pointer;">
+								<div>
+									<div style="color:white;"><%= user.name%></div>
+									<div style="font-size: 10px; color:gray;">@<%=user.nick%></div>
+								</div>        
+							</a>
+							<div style="text-align:right; color:gray; font-size:10px"><%= user.posts[i].simpleDate%></div>
+						</div>
+							<div style="color:white; margin-top:10px"><%= user.posts[i].content %></div>
+							<hr style="width:100%; margin:10px auto; height:1px;border:none; background-color:<%=user.posts[i].color%>;">
+			
+							<div style="display:flex; margin-top: 10px">
+								<div style="flex:1;color:gray; font-size:12px;text-align:center">
+								<a href="/home/<%=user.posts[i]._id%>"><%= user.posts[i].likes.length %> Likes</a></div>
+								<div style="flex:1; text-align: center">
+									<a href="/home/delete/<%=user.posts[i]._id%>">
+										<img src= "../public/images/delete.svg" style="width:18px;"/>
+									</a>
+								</div>
+							</div>
+						
+					</div>
+				<%}%>
+			</div>
+
+			<hr style="width:30%; margin:20px auto; height:1px;border:none; background-color:#111111;">
+			
+			<div style="text-align:center;">
+			<a href="/logout"><img src= "../public/images/logout.svg" style="width:18px;"/></a>
+			</div>
+		</div>
+		</div>
+		
+		<div style="flex: 9; background-color: #111111;">
+			<div style="position: fixed; width: 69.12%">
+            	<%- body %>
+			</div>
+        </div>
+		
+	</div>
+</body>
+</html>

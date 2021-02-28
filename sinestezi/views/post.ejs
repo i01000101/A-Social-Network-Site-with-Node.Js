@@ -1,0 +1,62 @@
+<div style="padding: 10px 20px; margin: 20px auto; background-color: black; color: white; width:500px; word-wrap: break-word; border-radius: 15px;  border:2px solid <%=post.color%>">
+			<div style="display:flex;justify-content:space-between">
+				<a href="/users/<%=post.author.nick%>" style="cursor: pointer;">
+					<div>
+						<div style="color:white;font-weight: bold;"><%= post.author.name %></div>
+						<div style="font-size: 10px; color:gray;">@<%= post.author.nick %></div>
+					</div>        
+            	</a>
+				<div style="text-align:right; color:gray; font-size:10px"><%= post.simpleDate%></div>
+			</div>
+			
+			
+			<div style="color:white; margin-top:10px;"><%= post.content %></div>
+			<hr style="width:100%; margin:10px auto; height:1px;border:none; background-color:<%=post.color%>;">
+			
+			<div style="display:flex; margin-top: 10px">
+				<div style="flex:1;color:gray; font-size:12px;text-align:center"><%= post.likes.length %> Likes</div>
+				<div style="flex:1; text-align: center">
+					<%if(post.author.nick != user.nick){%>
+						<%if(!post.likes.includes(user.nick)){%>
+						<a href="/home/like/<%=post._id%>">
+							<img src= "../public/images/star.svg" style="width:18px;"/>
+						</a>
+						<%}else{%>
+						<a href="/home/unlike/<%=post._id%>">
+							<img src= "../public/images/activeStar.svg" style="width:18px;"/>
+						</a>
+						<%}%>
+					<%}%>
+				</div>
+			</div>
+</div>
+<div style="text-align:center;padding: 10px 20px; margin: 20px auto; background-color: black; color: white; width:500px; word-wrap: break-word; border-radius: 15px;  border:2px solid <%=post.color%>">
+Likes
+</div>
+
+<div style="width:500px;height:50vh;margin:auto; overflow:auto">
+
+<% for(let i = 0; i < likeResults.length; i++){%>
+    <div style="margin: 20px auto; width:400px;background-color: black; border:2px solid <%=(likeResults[i].posts.length != 0 )?likeResults[i].posts[likeResults[i].posts.length-1].color:'black'%>; border-radius:15px; padding: 10px 20px;">
+       <div style="display:flex;justify-content:space-between">
+            <a href="/users/<%=likeResults[i].nick%>" style="cursor: pointer;">
+                <div>
+                    <div style="color:white;"><%=likeResults[i].name %></div>
+                    <div style="font-size: 10px; color:gray;">@<%=likeResults[i].nick %></div>
+                </div>        
+            </a>
+            <%if(likeResults[i].nick != user.nick){
+                if(!user.followings.includes(likeResults[i].nick)){
+                %>
+                <a href="/users/follow/<%=likeResults[i].nick%>"><button style="height:30px; background-color: green; color: white; border:none; outline:0; border-radius:20px">Follow</button></a>
+                <%}else{%>
+                <a href="/users/unfollow/<%=likeResults[i].nick%>"><button style="height:30px; background-color: red; color: white; border:none; outline:0; border-radius:20px">Unfollow</button></a>
+                <%}%>
+            <%}%>
+
+        </div>
+        <div style="color:white;margin-top:10px;"><%=likeResults[i].bio %></div>
+    </div>
+<%}%>
+
+</div>

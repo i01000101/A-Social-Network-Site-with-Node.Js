@@ -1,0 +1,27 @@
+<div style="height:92.8vh;overflow:auto">
+<p style="color: white; margin-top: 40px; text-align: center">There is <%= results.length %> results</p>
+
+<% for(let i = 0; i < results.length; i++){%>
+    <div style="margin: 20px auto; width:55%; background-color: black; border:2px solid <%=(results[i].posts.length != 0 )?results[i].posts[results[i].posts.length-1].color:'black'%>; border-radius:15px; padding: 10px 20px;">
+       <div style="display:flex;justify-content:space-between">
+            <a href="/users/<%=results[i].nick%>" style="cursor: pointer;">
+                <div>
+                    <div style="color:white;"><%=results[i].name %></div>
+                    <div style="font-size: 10px; color:gray;">@<%=results[i].nick %></div>
+                </div>        
+            </a>
+            <%if(results[i].nick != user.nick){
+                if(!user.followings.includes(results[i].nick)){
+                %>
+                <a href="/users/follow/<%=results[i].nick%>"><button style="height:30px; background-color: green; color: white; border:none; outline:0; border-radius:20px">Follow</button></a>
+                <%}else{%>
+                <a href="/users/unfollow/<%=results[i].nick%>"><button style="height:30px; background-color: red; color: white; border:none; outline:0; border-radius:20px">Unfollow</button></a>
+                <%}%>
+            <%}%>
+
+        </div>
+        <div style="color:white;margin-top:10px;"><%=results[i].bio %></div>
+    </div>
+<%}%>
+
+</div>

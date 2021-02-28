@@ -1,0 +1,75 @@
+<div style="height:92.8vh;overflow:auto">
+
+    <div style="margin-top:20px;">
+        <div style="color:white; width:55%; margin: auto; text-align: center"><%=user.name%></div>
+        <div style="color:gray; width:55%; font-size:10px; margin:auto; text-align: center">@<%=user.nick%></div>
+        
+    
+    </div>
+
+    <div style="width:44%; margin: 20px auto; padding:10px; border-radius: 15px; border:2px solid blue; background-color:black">
+        <div style="font-weight: bold; font-size:15px; color:white; text-align:center">
+            <div style="display:inline; ">BIO</div>
+        </div>
+        
+        <form action="/users/bioupdate" method="POST" id="shearingForm" style="display:flex; flex-direction:column; align-items:center">
+					<textarea name="bioUpdate" style="background-color: black; color:white; width: 100%; height:100px; resize:none; padding:10px 20px; border-top-right-radius:20px; border-top-left-radius:20px; border-style:none; outline:0"><%=user.bio%></textarea>
+			    	<div style="display:flex;background-color: black; width: 75%; height:40px; border-bottom-right-radius: 20px; border-bottom-left-radius:20px;">
+					
+					<div style="flex:1;text-align:center">
+					<button style="background:none; border:none; outline:0; cursor:pointer; color: white; border-radius:20px; height:30px" type="submit">
+					<img src= "../public/images/save.svg" style="width:25px;"/></button>
+					</div>
+				
+					</div>
+					
+				</form>
+    </div>
+
+    <div style="background-color:black; display: flex; justify-content:space-between; width:44%; margin: 20px auto; padding:10px; border-radius: 15px; border:2px solid blue; ">
+        <div style="color:white;text-align:center;font-size:12px">
+             <%=user.followers.length%> Followers | <%=user.followings.length%> Followings
+        </div>
+        
+    </div>
+
+
+    <div style="width: 55%;height:30px;background-color:black;margin:auto;border-top-right-radius:20px;border-top-left-radius:20px;padding: 0 10px 10px 10px;text-align:center;font-size:25px;color:#333333;color:#333333;font-family:Sans-Serif;font-weight: bold; ">
+			POSTS
+	</div>
+
+    <div style="width: 55%; height:40%; background-color:black; margin:auto; border-bottom-left-radius:20px; border-bottom-right-radius:20px;  overflow: auto; padding: 0 10px 10px 10px;">
+        <% for(let i = user.posts.length - 1; 0 <= i ; i--){%>
+            
+            <div style="padding: 10px 20px; margin: 20px auto; background-color: black; color: white;  word-wrap: break-word; border-radius: 15px; border:2px solid <%=user.posts[i].color%>">
+			<div style="display:flex;justify-content:space-between">
+				<a href="/users/<%=user.nick%>" style="cursor: pointer;">
+					<div>
+						<div style="color:white;font-weight: bold;"><%= user.name %></div>
+						<div style="font-size: 10px; color:gray;">@<%= user.nick %></div>
+					</div>        
+            	</a>
+				<div style="text-align:right; color:gray; font-size:10px"><%= user.posts[i].simpleDate%></div>
+			</div>
+			
+			
+			<div style="color:white; margin-top:10px;"><%= user.posts[i].content %></div>
+			<hr style="width:100%; margin:10px auto; height:1px;border:none; background-color:<%=user.posts[i].color%>;">
+			
+			<div style="display:flex; margin-top: 10px">
+				<div style="flex:1;color:gray; font-size:12px;text-align:center">
+                <a href="/home/<%=user.posts[i]._id%>"><%= user.posts[i].likes.length %> Likes</a></div>
+				<div style="flex:1; text-align: center">
+                    <a href="/home/delete/<%=user.posts[i]._id%>">
+										<img src= "../public/images/delete.svg" style="width:18px;"/>
+					</a>
+                </div>
+			</div>
+		</div>
+        <%}%>
+	</div>
+
+
+
+
+</div>

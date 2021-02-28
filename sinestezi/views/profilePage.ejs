@@ -1,0 +1,73 @@
+<div style="height:92.8vh;overflow:auto">
+
+    <div style="margin-top:20px;">
+        <div style="color:white; width:55%; margin: auto; text-align: center"><%=profileOwner.name%></div>
+        <div style="color:gray; width:55%; font-size:10px; margin:auto; text-align: center">@<%=profileOwner.nick%></div>
+        
+    
+    </div>
+
+    <div style="width:44%; margin: 20px auto; padding:10px; border-radius: 15px; border:2px solid blue; background-color:black">
+        <div style="font-weight: bold; font-size:15px; color:white; text-align:center">
+            <div style="display:inline; ">BIO</div>
+        </div>
+        <div style="margin-top:10px;color:white;text-align:center"><%=profileOwner.bio%></div>
+    </div>
+
+    <div style="background-color:black; display: flex; justify-content:space-between; width:44%; margin: 20px auto; padding:10px; border-radius: 15px; border:2px solid blue; ">
+        <div style="color:white;text-align:center;font-size:12px">
+             <%=profileOwner.followers.length%> Followers | <%=profileOwner.followings.length%> Followings
+        </div>
+        <%if(!user.followings.includes(profileOwner.nick)){%>
+                <a href="/users/follow/<%=profileOwner.nick%>"><button style="height:30px; background-color: green; color: white; border:none; outline:0; border-radius:20px">Follow</button></a>
+                <%}else{%>
+                <a href="/users/unfollow/<%=profileOwner.nick%>"><button style="height:30px; background-color: red; color: white; border:none; outline:0; border-radius:20px">Unfollow</button></a>
+        <%}%>
+    </div>
+
+
+    <div style="width: 55%;height:30px;background-color:black;margin:auto;border-top-right-radius:20px;border-top-left-radius:20px;padding: 0 10px 10px 10px;text-align:center;font-size:25px;color:#333333;color:#333333;font-family:Sans-Serif;font-weight: bold; ">
+			POSTS
+	</div>
+
+    <div style="width: 55%; height:50%; background-color:black; margin:auto; border-bottom-left-radius:20px; border-bottom-right-radius:20px;  overflow: auto; padding: 0 10px 10px 10px;">
+        <% for(let i = profileOwner.posts.length - 1; 0 <= i ; i--){%>
+            
+            <div style="padding: 10px 20px; margin: 20px auto; background-color: black; color: white;  word-wrap: break-word; border-radius: 15px; border:2px solid <%=profileOwner.posts[i].color%>">
+			<div style="display:flex;justify-content:space-between">
+				<a href="/users/<%=profileOwner.nick%>" style="cursor: pointer;">
+					<div>
+						<div style="color:white;font-weight: bold;"><%= profileOwner.name %></div>
+						<div style="font-size: 10px; color:gray;">@<%= profileOwner.nick %></div>
+					</div>        
+            	</a>
+				<div style="text-align:right; color:gray; font-size:10px"><%= profileOwner.posts[i].simpleDate%></div>
+			</div>
+			
+			
+			<div style="color:white; margin-top:10px;"><%= profileOwner.posts[i].content %></div>
+			<hr style="width:100%; margin:10px auto; height:1px;border:none; background-color:<%=profileOwner.posts[i].color%>;">
+			
+			<div style="display:flex; margin-top: 10px">
+				<div style="flex:1;color:gray; font-size:12px;text-align:center">
+                <a href="/home/<%=profileOwner.posts[i]._id%>"><%= profileOwner.posts[i].likes.length %> Likes</a></div>
+				<div style="flex:1; text-align: center">
+                    <%if(!profileOwner.posts[i].likes.includes(user.nick)){%>
+						<a href="/home/like/<%=profileOwner.posts[i]._id%>">
+							<img src= "../public/images/star.svg" style="width:18px;"/>
+						</a>
+						<%}else{%>
+						<a href="/home/unlike/<%=profileOwner.posts[i]._id%>">
+							<img src= "../public/images/activeStar.svg" style="width:18px;"/>
+						</a>
+					<%}%>
+                </div>
+			</div>
+		</div>
+        <%}%>
+	</div>
+
+
+
+
+</div>
