@@ -14,12 +14,25 @@
 	border-radius: 15px;
 }
 
-#topBar{
-	height: 50px;
+button, a{
+	cursor: pointer;
+}
+
+/*body { 
+	min-width:600px;
+	min-height: 400px;
+
+}*/
+
+.top{
+	height: 6vh;
+	min-height: 45px;
+	max-height: 75px;
 	width: 100%;
+}
 
+#topBar{
 	position: fixed;
-
 	display: flex;
 	flex-direction: row;
 	background-color: #222222;
@@ -48,8 +61,26 @@
 }
 
 
-[role="logo"]{
+[role="icon"]{
 	height: 30px;
+}
+
+#searchInput{
+	padding: 0 10px;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+	height: 30px;
+}
+
+#searchButton{
+	padding: 0px; 
+	width: 30px; 
+	height:30px; 
+	border: none; 
+	background-color:white; 
+	outline:0; 
+	cursor:pointer; 
+	border-top-right-radius:15px;
 }
 
 div.topItem{
@@ -59,14 +90,263 @@ div.topItem{
 input{
 	border-style: none;
 	border-radius: 25px;
-	height: 30px;
 	outline: 0;
 }
+
 button{
 	cursor: pointer;
 }
+
 a{
 	cursor: pointer;
 	text-decoration: none;
 	color: inherit;
+}
+
+#littleProfile{
+	position: fixed; 
+	width:30%;
+	min-width: 215px;
+	height:100%; 
+	background-color: #333333;
+	align-items:center;
+	box-shadow: 9px 5px 8px 0px black;
+}
+
+#sharingBox{
+	background-color: #111111; 
+	color:white; 
+	width: 75%; 
+	height:100px; 
+	resize:none; 
+	padding:10px 20px;
+	border-top-right-radius:20px; 
+	border-top-left-radius:20px; 
+	border-style:none; 
+	outline:0;
+}
+
+#sharingBoxBottom{
+	display:flex;
+	background-color: #111111;
+	width: 75%; 
+	height:40px; 
+	border-bottom-right-radius: 20px; 
+	border-bottom-left-radius:20px;
+}
+
+.boxItem{
+	flex:1;
+	text-align: center;
+}
+
+#shareButton{
+	background:none;
+	border:none; 
+	outline:0;
+	height:30px;
+}
+
+.littleProfileLine{
+	width:30%; 
+	margin:20px auto; 
+	height:1px;
+	border:none; 
+	background-color:#111111;
+}
+
+.postsBanner{
+	width: 75%;
+	height:30px;
+	background-color:#111111;
+	margin:auto;
+	border-top-right-radius:20px;
+	border-top-left-radius:20px;
+	padding: 0 10px 10px 10px;
+	text-align:center;
+	font-size:25px;
+	color:#333333;
+	font-weight: bold;
+}
+
+.profilePosts{
+	width: 75%; 
+	height:40%; 
+	background-color:#111111; 
+	margin:auto; 
+	border-bottom-left-radius:20px; 
+	border-bottom-right-radius:20px;  
+	overflow: auto; 
+	padding: 0 10px 10px 10px;
+}
+
+.post{
+	min-width: 135px;
+	margin-top: 20px;
+	padding: 10px 20px;
+	word-wrap: break-word;
+	border-radius: 15px;
+	border-style: solid;
+    border-width: 2px;
+}
+
+.streamPost{
+	margin: 20px auto; 
+	background-color: black; 
+	width:55%
+}
+
+.detailPost{
+	margin: 50px auto;
+	background-color: black; 
+	width:70%; 
+}
+
+.topOfBox{
+	display:flex;
+	justify-content:space-between;
+}
+
+.boxName{
+	font-size: 16px; 
+	color:white;
+	font-weight: bold;
+}
+
+.boxNick{
+	font-size: 10px; 
+	color:gray;
+}
+
+.postDate{
+	text-align:right;
+	color:gray;
+	font-size:10px;
+}
+
+.postContent{
+	color:white; 
+	margin-top:10px;
+	font-size: 16px;
+}
+
+.postLine{
+	width:100%; 
+	margin:10px auto; 
+	height:1px;
+	border:none;
+}
+
+.postBottom{
+	display:flex; 
+	margin-top: 10px
+}
+
+.likeCounter{
+	color:gray;
+	font-size:12px;
+}
+
+.likesBanner{
+	text-align:center;
+	margin: 0 auto; 
+	background-color: black;
+	width:50%;
+	color: white;
+}
+
+#likes{
+	width: 500px;
+	height: 50vh;
+	margin: auto; 
+	overflow: auto;
+}
+
+.followingButton{
+	height:30px; 
+	color: white; 
+	border:none;
+	border-radius:20px;
+	outline:0; 
+}
+
+.profileName{
+	font-size:23px; 
+	color: white; 
+	text-align: center;
+}
+
+.profileNick{
+	font-size:12px; 
+	color: gray; 
+	text-align: center;
+}
+
+.bioBox{
+	width:30%; 
+	margin: 20px auto; 
+	padding:10px; 
+	background-color:black;
+	border-radius: 15px; 
+	border-style: solid;
+    border-width: 2px;
+}
+
+.followBox{
+	background-color:black; 
+	display: flex; 
+	justify-content:space-between; 
+	width:40%; 
+	margin: 20px auto; 
+	padding:10px; 
+	border-radius: 15px; 
+	border-style: solid;
+    border-width: 2px;
+}
+
+.bioBanner{
+	font-weight: bold; 
+	font-size:15px; 
+	color:white; 
+	text-align:center;
+}
+
+.bioUpdateForm{
+	display:flex; 
+	flex-direction:column; 
+	align-items:center;
+}
+
+#bioUpdateTextArea{
+	background-color: black; 
+	color:white; 
+	width: 100%; 
+	height:100px; 
+	resize:none; 
+	padding:10px 20px;
+	border-style:none;
+	outline:0;
+}
+
+#bioUpdateBottom{
+	display:flex;
+	background-color: black; 
+	width: 75%; 
+	height:40px;
+}
+
+#searchBanner{
+	color: white; 
+	margin-top: 40px; 
+	text-align: center;
+}
+
+.miniUserBox{
+	margin: 20px auto; 
+	width:55%; 
+	background-color: black;
+	padding: 10px 20px;
+	border-radius: 15px;
+	border-style: solid;
+    border-width: 2px;
 }

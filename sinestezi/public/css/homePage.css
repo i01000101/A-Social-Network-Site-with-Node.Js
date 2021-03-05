@@ -4,17 +4,31 @@
 	font-family: sans-serif;
 }
 
-header{
-	height: 100px;
-	width: 100%;
-	position: fixed;
-	
+::-webkit-scrollbar{
+	width: 10px;
 }
 
-img{
+::-webkit-scrollbar-thumb{
+	background-color: black;
+	width: 5px;
+	border-radius: 15px;
+}
+
+.floatingItems{
+    height: 100px;
+	width: 100%;
+	position: fixed;
+}
+
+.floatingItems img{
 	display: block;
 	margin-right: auto;
 	margin-left: auto;
+}
+
+.floatingItems h4,h5{
+    color: white;
+    text-align: center;
 }
 
 .mainScreen{
@@ -26,18 +40,21 @@ img{
 	width: 50%;
 }
 
-
-form{
+.side form{
 	width: 250px;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 250px;
+	margin: 250px auto 0 auto;
 }
 
-label{
-	display: block;
-	color: white;
-	font-size: 20px;
+.title{
+    text-align: center; 
+    color: white; 
+    font-size: 45px;
+}
+
+.message{
+    margin-top:10px;
+    text-align:center;
+    font-weight:bold;
 }
 
 input, button{
