@@ -1,25 +1,22 @@
-<div style="height:92.8vh;overflow:auto">
+<div style="height:100%;overflow:auto">
 	<% for(let i = 0; i < allPosts.length; i++){%>
-		<div style="padding: 10px 20px; margin: 20px auto; background-color: black; color: white; width:55%; word-wrap: break-word; border-radius: 15px;  border:2px solid <%=allPosts[i].color%>">
-			<div style="display:flex;justify-content:space-between">
-				<a href="/users/<%=allPosts[i].author.nick%>" style="cursor: pointer;">
+		<div class="post streamPost" style= "border-color:<%=allPosts[i].color%>">
+			<div class="topOfBox">
+				<a href="/users/<%=allPosts[i].author.nick%>">
 					<div>
-						<div style="color:white;font-weight: bold;"><%= allPosts[i].author.name %></div>
-						<div style="font-size: 10px; color:gray;">@<%= allPosts[i].author.nick %></div>
+						<div class="boxName"><%= allPosts[i].author.name %></div>
+						<div class="boxNick">@<%= allPosts[i].author.nick %></div>
 					</div>        
             	</a>
-				<div style="text-align:right; color:gray; font-size:10px"><%= allPosts[i].simpleDate%></div>
+				<div class="postDate"><%= allPosts[i].simpleDate%></div>
 			</div>
-			
-			
-			<div style="color:white; margin-top:10px;"><%= allPosts[i].content %></div>
-			<hr style="width:100%; margin:10px auto; height:1px;border:none; background-color:<%=allPosts[i].color%>;">
-			
-			<div style="display:flex; margin-top: 10px">
-				<div style="flex:1;color:gray; font-size:12px;text-align:center">
+			<div class="postContent"><%= allPosts[i].content %></div>
+			<hr class="postLine" style="background-color:<%=allPosts[i].color%>;">
+			<div class="postBottom">
+				<div class="likeCounter boxItem">
 					<a href="/home/<%=allPosts[i]._id%>"><%= allPosts[i].likes.length %> Likes</a>
 				</div>
-				<div style="flex:1; text-align: center">
+				<div class="boxItem">
 					<%if(allPosts[i].author.nick != user.nick){%>
 						<%if(!allPosts[i].likes.includes(user.nick)){%>
 						<a href="/home/like/<%=allPosts[i]._id%>">

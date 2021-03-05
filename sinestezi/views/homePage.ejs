@@ -5,24 +5,20 @@
 	<link rel="stylesheet" href="../public/css/homePage.css"/>
 </head>
 <body>
-
-	<header style="padding-top: 50px;">
+	<div class="floatingItems" style="padding-top: 50px;">
 		<img src="../public/images/logo2.png">
-	</header>
-	<header style="bottom: 0;">
-		<h4 style="text-align: center; color: white;">Product of EU</h4>
-		<h5 style="text-align: center; color: white;">Sinestezi is a website where you can express your feelings with colors</h5>
-	</header>
+	</div>
+	<div class="floatingItems" style="bottom: 0;">
+		<h4>Product of EU</h4>
+		<h5>Sinestezi is a website where you can express your feelings with colors</h5>
+	</div>
 	<div class="mainScreen">
-
-		<div class="loginSide side" id="loginSideDiv">
-			
+		<div class="side" id="loginSideDiv">
 			<form action="/users/login" method="POST">
-				
 				<div>
-					<h1 style="text-align: center; color: white; font-size: 45px;">Login</h1>
+					<h1 class="title">Login</h1>
 				</div>
-				<div style="margin-top:10px;text-align:center;color:red;font-weight:bold">
+				<div class="message" style="color:red;">
 					<%=loginErr.length > 0?loginErr:''%>
 				</div>
 				<div>
@@ -36,16 +32,15 @@
 				</div>
 			</form>
 		</div>
-
-		<div class="signSide side" id="signSideDiv">
+		<div class="side" id="signSideDiv">
 			<form action="/users/signup" method="POST"  id="signForm">
 				<div>
-					<h1 style="text-align: center; color: white;font-size: 45px;">Sign Up</h1>
+					<h1 class="title">Sign Up</h1>
 				</div>
-				<div style="margin-top:10px;text-align:center;color:green;font-weight:bold">
+				<div class="message" style="color:green;">
 					<%=signSuccess.length > 0?signSuccess:''%>
 				</div>
-				<div style="margin-top:10px;text-align:center;color:red;font-weight:bold">
+				<div class="message" style="color:red;">
 					<%=signErr.length > 0?signErr:''%>
 				</div>
 				<div>
@@ -69,7 +64,6 @@
 			</form>
 		</div>
 	</div>
-
 <script src="../public/js/homePage.js"></script>
 </body>
 </html>
