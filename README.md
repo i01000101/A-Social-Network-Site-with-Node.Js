@@ -11,7 +11,7 @@ There is a concept that people express their feelings with colors in this websit
 
 ### Installing
 
-1. Download project
+1. Download the project
 2. Go to the project root directory 
    ```bash
    cd sinestezi
@@ -24,3 +24,4 @@ There is a concept that people express their feelings with colors in this websit
   ```bash
   yarn install
   ```
+You also need MongoDB and the port you provided in app.js should be open.
